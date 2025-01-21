@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Jerez de la Frontera | Shoutout",
+    "client": "Lamborghini squadra corse",
+    "role": "Director & Editor",
+    "year": "2024",
+    "video": {
+      "src": "LamboJerez",
+      "type": "video/mp4"
+    }
+  },
+  {
+    "title": "Akoni | FW23",
+    "client": "Akoni",
+    "role": "Editor & VFX Editor",
+    "year": "2023",
+    "video": {
+      "src": "Akoni",
+      "type": "video/mp4"
+    }
+  },
+  {
+    "title": "D&G | Backstage",
+    "client": "D&G",
+    "role": "Editor & VFX Editor",
+    "year": "2022",
+    "video": {
+      "src": "DolceAndGabbana",
+      "type": "video/mp4"
+    }
+  }
+]
