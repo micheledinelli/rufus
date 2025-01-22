@@ -126,9 +126,14 @@ export default function Grid() {
               <div className="relative w-full h-full md:w-2/4">
                 <video className="w-full h-full tv object-cover"
                   controlsList="nodownload"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   poster={video.video.poster}
                   onMouseEnter={(e) => e.currentTarget.controls = true}
-                  onMouseLeave={(e) => e.currentTarget.controls = false}>
+                  onMouseLeave={(e) => e.currentTarget.controls = false}
+                >
                   <source src={video.video.src} type={video.video.type} />
                 </video>
 
