@@ -9,6 +9,7 @@ interface VideoData {
   video: {
     src: string;
     type: string;
+    poster: string;
   };
 }
 
@@ -23,7 +24,8 @@ const videoData: VideoData[] = [
     year: "2024",
     video: {
       src: "/videos/lambo.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "/images/lambo.png"
     }
   },
   {
@@ -36,7 +38,8 @@ const videoData: VideoData[] = [
     year: "2023",
     video: {
       src: "videos/akoni.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "/images/akoni.png"
     }
   },
   {
@@ -49,7 +52,8 @@ const videoData: VideoData[] = [
     year: "2022",
     video: {
       src: "videos/deg.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "/images/deg.png"
     }
   },
   {
@@ -62,7 +66,8 @@ const videoData: VideoData[] = [
     year: "2022",
     video: {
       src: "videos/missoni.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "/images/missoni.png"
     }
   },
   {
@@ -75,20 +80,22 @@ const videoData: VideoData[] = [
     year: "2021",
     video: {
       src: "videos/gucci.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "images/gucci.png"
     }
   },
   {
-    title: "Yatai | Shoutout",
+    title: "Yatay | Shoutout",
     client: {
-      name: "Yatai",
+      name: "Yatay",
       url: "https://www.yatai.it/"
     },
     role: "Director & Editor",
     year: "2021",
     video: {
       src: "videos/yatai.mp4",
-      type: "video/mp4"
+      type: "video/mp4",
+      poster: "images/yatay.png"
     }
   }
 ];
@@ -119,16 +126,17 @@ export default function Grid() {
               <div className="relative w-full h-full md:w-2/4">
                 <video className="w-full h-full tv object-cover"
                   controlsList="nodownload"
+                  poster={video.video.poster}
                   onMouseEnter={(e) => e.currentTarget.controls = true}
                   onMouseLeave={(e) => e.currentTarget.controls = false}>
                   <source src={video.video.src} type={video.video.type} />
                 </video>
 
                 {/* Video badge mobile */}
-                <div className="md:hidden absolute top-4 left-4 mix-blend-plus-darker">
-                  <a href={"/projects/" + index} className="font-bold text-lg">{video.title}</a>
+                <div className="md:hidden text-sm absolute top-4 left-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                  <a href={"/projects/" + index} className="font-bold">{video.title}</a>
                 </div>
-                <div className="md:hidden absolute bottom-4 right-4 mix-blend-plus-darker">
+                <div className="md:hidden text-sm absolute bottom-4 right-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   <p className="font-semibold">{video.role}</p>
                 </div>
               </div>
