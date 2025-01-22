@@ -1,20 +1,8 @@
-interface VideoData {
-  title: string;
-  client: {
-    name: string;
-    url: string;
-  };
-  role: string;
-  year: string;
-  video: {
-    src: string;
-    type: string;
-    poster: string;
-  };
-}
+import { VideoData } from "../types/VideoData";
 
 const videoData: VideoData[] = [
   {
+    id: "jerez-de-la-frontera",
     title: "Jerez de la Frontera | Shoutout",
     client: {
       name: "Lamborghini squadra corse",
@@ -29,6 +17,7 @@ const videoData: VideoData[] = [
     }
   },
   {
+    id: "akoni",
     title: "Akoni | FW23",
     client: {
       name: "Akoni",
@@ -43,6 +32,7 @@ const videoData: VideoData[] = [
     }
   },
   {
+    id: "d&g",
     title: "D&G | BTS",
     client: {
       name: "Dolce & Gabbana",
@@ -57,6 +47,7 @@ const videoData: VideoData[] = [
     }
   },
   {
+    id: "missoni",
     title: "Missoni | BTS",
     client: {
       name: "Missoni",
@@ -71,6 +62,7 @@ const videoData: VideoData[] = [
     }
   },
   {
+    id: "gucci",
     title: "Gucci | Sohutout",
     client: {
       name: "Gucci",
@@ -85,6 +77,7 @@ const videoData: VideoData[] = [
     }
   },
   {
+    id: "yatay",
     title: "Yatay | Shoutout",
     client: {
       name: "Yatay",
@@ -104,7 +97,7 @@ export default function Grid() {
   return (
     <div className="relative flex flex-row justify-between border-t-1 border-slate-600 h-full">
       {/* Sidebar */}
-      <div className="h-full sticky top-0 hidden text-sm md:w-1/5 md:flex md:flex-col md:justify-between md:pl-4">
+      <div className="h-full sticky top-12 hidden text-sm md:w-1/5 md:flex md:flex-col md:justify-between md:pl-4">
         <div className="font-bold mt-4">
           <p>VIDEO CREATOR</p>
           <a className="text-accent" href="mailto:info@francescorufini.it">
@@ -139,7 +132,7 @@ export default function Grid() {
 
                 {/* Video badge mobile */}
                 <div className="md:hidden text-sm absolute top-4 left-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                  <a href={"/projects/" + index} className="font-bold">{video.title}</a>
+                  <a href={"/projects/" + video.id} className="font-bold">{video.title}</a>
                 </div>
                 <div className="md:hidden text-sm absolute bottom-4 right-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   <p className="font-semibold">{video.role}</p>
@@ -148,7 +141,7 @@ export default function Grid() {
 
               {/* Video description for md and beyond  */}
               <div className="hidden md:block mt-4 w-2/4">
-                <a href={"/projects/" + index} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-4">{video.title}</a>
+                <a href={"/projects/" + video.id} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-4">{video.title}</a>
                 <div className="hidden font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
                   <div>
                     <p className="text-xs font-jetbrains">Client</p>
