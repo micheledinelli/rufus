@@ -14,11 +14,13 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#1a4a3c',
+        primary: '#40332B;',
         accent: '#81a49d',
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
+        dmsans: ['"DM Sans"', "sans-serif"],
+        notosans: ['"Noto Sans"', "sans-serif"],
         jetbrains: ["JetBrains Mono", "monospace"],
       },
     },

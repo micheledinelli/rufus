@@ -1,6 +1,9 @@
 interface VideoData {
   title: string;
-  client: string;
+  client: {
+    name: string;
+    url: string;
+  };
   role: string;
   year: string;
   video: {
@@ -12,7 +15,10 @@ interface VideoData {
 const videoData: VideoData[] = [
   {
     title: "Jerez de la Frontera | Shoutout",
-    client: "Lamborghini squadra corse",
+    client: {
+      name: "Lamborghini squadra corse",
+      url: "https://www.lamborghini.com/it-en/motorsport"
+    },
     role: "Director & Editor",
     year: "2024",
     video: {
@@ -22,7 +28,10 @@ const videoData: VideoData[] = [
   },
   {
     title: "Akoni | FW23",
-    client: "Akoni",
+    client: {
+      name: "Akoni",
+      url: "https://www.akoni.com/"
+    },
     role: "Editor & VFX Editor",
     year: "2023",
     video: {
@@ -31,8 +40,11 @@ const videoData: VideoData[] = [
     }
   },
   {
-    title: "D&G | Backstage",
-    client: "D&G",
+    title: "D&G | BTS",
+    client: {
+      name: "Dolce & Gabbana",
+      url: "https://www.dolcegabbana.com/"
+    },
     role: "Editor & VFX Editor",
     year: "2022",
     video: {
@@ -41,22 +53,41 @@ const videoData: VideoData[] = [
     }
   },
   {
-    title: "Akoni | FW23",
-    client: "Akoni",
+    title: "Missoni | BTS",
+    client: {
+      name: "Missoni",
+      url: "https://www.missoni.com/"
+    },
     role: "Editor & VFX Editor",
-    year: "2023",
+    year: "2022",
     video: {
-      src: "videos/akoni.mp4",
+      src: "videos/missoni.mp4",
       type: "video/mp4"
     }
   },
   {
-    title: "D&G | Backstage",
-    client: "D&G",
+    title: "Gucci | Sohutout",
+    client: {
+      name: "Gucci",
+      url: "https://www.gucci.com/"
+    },
     role: "Editor & VFX Editor",
-    year: "2022",
+    year: "2021",
     video: {
-      src: "videos/deg.mp4",
+      src: "videos/gucci.mp4",
+      type: "video/mp4"
+    }
+  },
+  {
+    title: "Yatai | Shoutout",
+    client: {
+      name: "Yatai",
+      url: "https://www.yatai.it/"
+    },
+    role: "Director & Editor",
+    year: "2021",
+    video: {
+      src: "videos/yatai.mp4",
       type: "video/mp4"
     }
   }
@@ -64,50 +95,59 @@ const videoData: VideoData[] = [
 
 export default function Grid() {
   return (
-    <div className="flex flex-row justify-between border-t-1 border-slate-600 h-full">
+    <div className="relative flex flex-row justify-between border-t-1 border-slate-600 h-full">
       {/* Sidebar */}
-      <div className="hidden md:w-1/5 border-r-2 border-slate-600 md:flex md:flex-col md:justify-between pl-4 text-sm">
-        <div className="mt-4 sticky top-12">
-          <p className="font-bold">VIDEO CREATOR</p>
-          <a className="text-accent font-bold planet" href="mailto:info@francescorufini.it">
+      <div className="h-full sticky top-0 hidden text-sm md:w-1/5 md:flex md:flex-col md:justify-between md:pl-4">
+        <div className="font-bold mt-4">
+          <p>VIDEO CREATOR</p>
+          <a className="text-accent" href="mailto:info@francescorufini.it">
             INFO@FRANCESCORUFINI.IT
           </a>
-          <p className="text-accent font-bold planet">3392949688</p>
+          <div>
+            <a href="tel:3392949688" className="text-accent">3392949688</a>
+          </div>
         </div>
-        <p className="fixed bottom-2 font-bold font-jetbrains text-sm">FrancescoRufini&copy;{new Date().getFullYear()}</p>
+        <p className="fixed bottom-2 font-jetbrains text-xs">Francesco Rufini&copy;{new Date().getFullYear()}</p>
       </div>
 
       {/* Content */}
-      <div className="relative w-full h-full lg:w-4/5">
+      <div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600">
         {
           videoData &&
           videoData.map((video, index) => (
-            <div key={index} className="md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600">
+            <div key={index} className="sticky top-0 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
               <div className="relative w-full h-full md:w-2/4">
-                <video className="w-full h-full tv border-none">
+                <video className="w-full h-full tv object-cover"
+                  controlsList="nodownload"
+                  onMouseEnter={(e) => e.currentTarget.controls = true}
+                  onMouseLeave={(e) => e.currentTarget.controls = false}>
                   <source src={video.video.src} type={video.video.type} />
                 </video>
-                <div className="md:hidden absolute top-4 left-4">
-                  <p className="font-bold text-lg">{video.title}</p>
+
+                {/* Video badge mobile */}
+                <div className="md:hidden absolute top-4 left-4 mix-blend-plus-darker">
+                  <a href={"/projects/" + index} className="font-bold text-lg">{video.title}</a>
                 </div>
-                <div className="md:hidden absolute bottom-4 right-4">
+                <div className="md:hidden absolute bottom-4 right-4 mix-blend-plus-darker">
                   <p className="font-semibold">{video.role}</p>
                 </div>
               </div>
+
+              {/* Video description for md and beyond  */}
               <div className="hidden md:block mt-4 w-2/4">
-                <p className="font-bold text-lg">{video.title}</p>
-                <div className="hidden md:mt-4 md:flex md:flex-col md:gap-4 text-sm">
+                <a href={"/projects/" + index} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-4">{video.title}</a>
+                <div className="hidden font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
                   <div>
                     <p className="text-xs font-jetbrains">Client</p>
-                    <p className="font-semibold">{video.client}</p>
+                    <a href={video.client.url} className="hover:line-through decoration-4">{video.client.name}</a>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Role</p>
-                    <p className="font-semibold">{video.role}</p>
+                    <p>{video.role}</p>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Year</p>
-                    <p className="font-semibold">{video.year}</p>
+                    <p>{video.year}</p>
                   </div>
                 </div>
               </div>
