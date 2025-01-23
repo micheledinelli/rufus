@@ -128,10 +128,10 @@ export default function Grid() {
       >
         <div className="font-bold mt-4 flex flex-col pl-4">
           <p>VIDEO CREATOR</p>
-          <a className="hover:underline text-accent" href="mailto:info@francescorufini.it">
+          <a className="hover:underline decoration-2 text-accent" href="mailto:info@francescorufini.it">
             INFO@FRANCESCORUFINI.IT
           </a>
-          <a href="tel:3392949688" className="hover:underline text-accent">3392949688</a>
+          <a href="tel:3392949688" className="hover:underline decoration-2 text-accent">3392949688</a>
         </div>
         <ul className="
         font-bold font-jetbrains border-t-1 border-b-1 border-slate-600
@@ -146,7 +146,7 @@ export default function Grid() {
               return acc;
             }, []).map((role, index) => (
               <li
-                key={index}
+                key={role + index}
                 className={`decoration-2 cursor-pointer 
                   ${filter == role ? "line-through text-accent" : "hover:underline"}`}
                 onClick={() => setFilter(role)}>
@@ -212,7 +212,6 @@ export default function Grid() {
                   <div>
                     <p className="text-xs font-jetbrains">Agency</p>
                     <p>{video.agency}</p>
-                    <p>{video.video.src}</p>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Year</p>
