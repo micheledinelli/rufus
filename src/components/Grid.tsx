@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import { VideoData } from "../types/VideoData";
 
 const videoData: VideoData[] = [
@@ -9,6 +10,7 @@ const videoData: VideoData[] = [
       url: "https://www.lamborghini.com/it-en/motorsport"
     },
     role: "Director & Editor",
+    agency: "Pros on pixel",
     year: "2024",
     video: {
       src: "/videos/lambo.mp4",
@@ -24,6 +26,7 @@ const videoData: VideoData[] = [
       url: "https://www.akoni.com/"
     },
     role: "Editor & VFX Editor",
+    agency: "Providence",
     year: "2023",
     video: {
       src: "videos/akoni.mp4",
@@ -39,6 +42,7 @@ const videoData: VideoData[] = [
       url: "https://www.dolcegabbana.com/"
     },
     role: "Editor & VFX Editor",
+    agency: "Providence",
     year: "2022",
     video: {
       src: "videos/deg.mp4",
@@ -54,6 +58,7 @@ const videoData: VideoData[] = [
       url: "https://www.missoni.com/"
     },
     role: "Editor & VFX Editor",
+    agency: "Providence",
     year: "2022",
     video: {
       src: "videos/missoni.mp4",
@@ -69,6 +74,7 @@ const videoData: VideoData[] = [
       url: "https://www.gucci.com/"
     },
     role: "Editor & VFX Editor",
+    agency: "Providence",
     year: "2021",
     video: {
       src: "videos/gucci.mp4",
@@ -83,7 +89,8 @@ const videoData: VideoData[] = [
       name: "Yatay",
       url: "https://www.yatai.it/"
     },
-    role: "Director & Editor",
+    role: "Motion Designer",
+    agency: "Providence",
     year: "2021",
     video: {
       src: "videos/yatai.mp4",
@@ -94,34 +101,78 @@ const videoData: VideoData[] = [
 ];
 
 export default function Grid() {
+  const [filter, setFilter] = useState<string | null>(null);
+  const [videos, setVideos] = useState<VideoData[]>(videoData);
+
+  const filterData = useCallback((data: VideoData[]) => {
+    if (!filter) {
+      setVideos(data);
+      return data
+    }
+    setVideos(data.filter((video) => video.role === filter));
+  }, [filter]);
+
+  useEffect(() => {
+    filterData(videoData);
+  }, [filter, filterData]);
+
   return (
-    <div className="relative flex flex-row justify-between border-t-1 border-slate-600 h-full">
+    <div className="relative flex flex-row justify-between h-full bg-white">
+
       {/* Sidebar */}
-      <div className="h-full sticky top-0 hidden text-sm md:w-1/5 md:flex md:flex-col md:justify-between md:pl-4">
-        <div className="font-bold mt-4">
+      <div className="
+      hidden h-full text-sm
+      md:w-1/5 md:flex md:flex-col md:justify-between 
+      md:sticky md:top-12"
+      >
+        <div className="font-bold mt-4 flex flex-col pl-4">
           <p>VIDEO CREATOR</p>
-          <a className="text-accent" href="mailto:info@francescorufini.it">
+          <a className="hover:underline text-accent" href="mailto:info@francescorufini.it">
             INFO@FRANCESCORUFINI.IT
           </a>
-          <div>
-            <a href="tel:3392949688" className="text-accent">3392949688</a>
-          </div>
+          <a href="tel:3392949688" className="hover:underline text-accent">3392949688</a>
         </div>
-        <p className="fixed bottom-2 font-jetbrains text-xs">Francesco Rufini&copy;{new Date().getFullYear()}</p>
-      </div>
+        <ul className="
+        font-bold font-jetbrains border-t-1 border-b-1 border-slate-600
+        flex flex-col list-inside list-disc pl-4 my-6 py-4">
+          <span className="mb-2">Role</span>
+          {
+            videoData &&
+            videoData.reduce((acc: string[], video) => {
+              if (!acc.includes(video.role)) {
+                acc.push(video.role);
+              }
+              return acc;
+            }, []).map((role, index) => (
+              <li
+                key={index}
+                className={`decoration-2 cursor-pointer 
+                  ${filter == role ? "line-through text-accent" : "hover:underline"}`}
+                onClick={() => setFilter(role)}>
+                {role}
+              </li>
+            ))
+          }
+          <li className="decoration-2 cursor-pointer hover:underline"
+            onClick={() => setFilter(null)}>
+            Reset
+          </li>
+        </ul>
+      </div >
 
       {/* Content */}
-      <div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600">
+      < div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600" >
         {
-          videoData &&
-          videoData.map((video, index) => (
-            <div key={index} className="sticky top-0 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
+          videos &&
+          videos.map((video, index) => (
+            <div key={index} className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
               <div className="relative w-full h-full md:w-3/5">
                 <video className="w-full h-full tv object-cover"
                   controlsList="nodownload"
                   autoPlay
                   loop
                   muted
+                  disablePictureInPicture
                   controls={false}
                   playsInline
                   poster={video.video.poster}
@@ -141,16 +192,20 @@ export default function Grid() {
               </div>
 
               {/* Video description for md and beyond  */}
-              <div className="hidden md:block mt-4 w-2/5">
+              <div className="hidden md:block mt-6 w-2/5">
                 <a href={"/projects/" + video.id} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2">{video.title}</a>
-                <div className="hidden font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
+                <div className="hidden text-sm font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
                   <div>
                     <p className="text-xs font-jetbrains">Client</p>
                     <a href={video.client.url} className="hover:line-through decoration-2">{video.client.name}</a>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Role</p>
-                    <p>{video.role}</p>
+                    <p className={`${filter === video.role ? "animate-pulse text-accent" : ""}`}>{video.role}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-jetbrains">Agency</p>
+                    <p>{video.agency}</p>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Year</p>
@@ -161,7 +216,7 @@ export default function Grid() {
             </div>
           ))
         }
-      </div>
+      </div >
     </div >
   );
 }

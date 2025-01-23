@@ -18,13 +18,13 @@
 }
 
 :root {
-  font-family: "Roboto", "DM Sans", "Noto Sans", sans-serif;
+  font-family: "DM Sans", "Roboto", "Noto Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   /* color: #1a4a3c; */
-  color: #40332B;
-  background-color: white;
+  color: #00281D;
+  background-color: #EDEDED;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,7 +34,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #121212 #ffffff;
+  scrollbar-color: #121212 #EDEDED;
 }
 
 body {
@@ -50,7 +50,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #EDEDED;
 
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
   -webkit-border-radius: 10px;

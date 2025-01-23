@@ -6,6 +6,7 @@ export interface VideoData {
         url: string;
     };
     role: string;
+    agency: string;
     year: string;
     video: {
         src: string;

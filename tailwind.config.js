@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       colors: {
-        primary: '#40332B;',
-        accent: '#81a49d',
+        primary: '#00281D;',
+        accent: '#00BC98',
+        white: '#EDEDED',
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
