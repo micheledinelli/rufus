@@ -109,6 +109,7 @@ export default function Grid() {
       setVideos(data);
       return data
     }
+    console.log(data.filter((video) => video.role === filter))
     setVideos(data.filter((video) => video.role === filter));
   }, [filter]);
 
@@ -164,9 +165,12 @@ export default function Grid() {
       < div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600" >
         {
           videos &&
-          videos.map((video, index) => (
-            <div key={index} className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
-              <div className="relative w-full h-full md:w-3/5">
+          videos.map((video) => (
+            <div key={video.id} className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
+              <div
+                className="relative w-full h-full md:w-3/5"
+                onClick={() => window.location.href = "/projects/" + video.id}
+              >
                 <video className="w-full h-full tv object-cover"
                   controlsList="nodownload"
                   autoPlay
@@ -193,7 +197,9 @@ export default function Grid() {
 
               {/* Video description for md and beyond  */}
               <div className="hidden md:block mt-6 w-2/5">
-                <a href={"/projects/" + video.id} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2">{video.title}</a>
+                <a href={"/projects/" + video.id} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2">
+                  {video.title}
+                </a>
                 <div className="hidden text-sm font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
                   <div>
                     <p className="text-xs font-jetbrains">Client</p>
@@ -206,6 +212,7 @@ export default function Grid() {
                   <div>
                     <p className="text-xs font-jetbrains">Agency</p>
                     <p>{video.agency}</p>
+                    <p>{video.video.src}</p>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Year</p>
