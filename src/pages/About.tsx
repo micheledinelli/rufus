@@ -23,7 +23,8 @@ export default function About() {
               Linkedin
             </a>
             <div className="text-xs mt-6">Website coded by
-              <a className="text-accent hover:underline decoration-2" href="https://micheledinelli.github.io"> Michele Dinelli</a>
+              <p className="text-accent hover:underline decoration-2">
+                <a href="https://micheledinelli.github.io"> Michele Dinelli</a></p>
             </div>
           </div>
         </div>

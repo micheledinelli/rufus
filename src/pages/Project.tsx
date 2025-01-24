@@ -118,6 +118,6 @@ export default function Project() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
