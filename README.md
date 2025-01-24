@@ -8,7 +8,7 @@
 ![react-router](https://img.shields.io/badge/React%20Router-CA4245.svg?style=plain&logo=React-Router&logoColor=white)
 ![vercel](https://img.shields.io/badge/Vercel-000000.svg?style=plain&logo=Vercel&logoColor=white)
 
-![hero](/public/images/readme.png)
+![hero](/public/images/readme.webp)
 
 Francesco Rufini's personal website
 </div>

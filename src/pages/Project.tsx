@@ -17,7 +17,7 @@ const videoData: VideoData[] = [
     video: {
       src: "/videos/akoni.mp4",
       type: "video/mp4",
-      poster: "/images/akoni.png"
+      poster: "/images/akoni.webp"
     }
   },
   {
@@ -33,7 +33,7 @@ const videoData: VideoData[] = [
     video: {
       src: "/videos/akoni2.mp4",
       type: "video/mp4",
-      poster: "/images/akoni.png"
+      poster: "/images/akoni.webp"
     }
   },
   {
@@ -49,7 +49,7 @@ const videoData: VideoData[] = [
     video: {
       src: "/videos/akoni3.mp4",
       type: "video/mp4",
-      poster: "/images/akoni.png"
+      poster: "/images/akoni.webp"
     }
   },
 ]

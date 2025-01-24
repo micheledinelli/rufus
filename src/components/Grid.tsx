@@ -15,7 +15,7 @@ const videoData: VideoData[] = [
     video: {
       src: "/videos/lambo.mp4",
       type: "video/mp4",
-      poster: "/images/lambo.png"
+      poster: "/images/lambo.webp"
     }
   },
   {
@@ -31,7 +31,7 @@ const videoData: VideoData[] = [
     video: {
       src: "videos/akoni.mp4",
       type: "video/mp4",
-      poster: "/images/akoni.png"
+      poster: "/images/akoni.webp"
     }
   },
   {
@@ -47,7 +47,7 @@ const videoData: VideoData[] = [
     video: {
       src: "videos/deg.mp4",
       type: "video/mp4",
-      poster: "/images/deg.png"
+      poster: "/images/deg.webp"
     }
   },
   {
@@ -63,7 +63,7 @@ const videoData: VideoData[] = [
     video: {
       src: "videos/missoni.mp4",
       type: "video/mp4",
-      poster: "/images/missoni.png"
+      poster: "/images/missoni.webp"
     }
   },
   {
@@ -79,7 +79,7 @@ const videoData: VideoData[] = [
     video: {
       src: "videos/gucci.mp4",
       type: "video/mp4",
-      poster: "images/gucci.png"
+      poster: "images/gucci.webp"
     }
   },
   {
@@ -95,7 +95,7 @@ const videoData: VideoData[] = [
     video: {
       src: "videos/yatai.mp4",
       type: "video/mp4",
-      poster: "images/yatay.png"
+      poster: "images/yatay.webp"
     }
   }
 ];
