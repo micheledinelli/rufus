@@ -20,8 +20,6 @@ export default {
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
-        dmsans: ['"DM Sans"', "sans-serif"],
-        notosans: ['"Noto Sans"', "sans-serif"],
         jetbrains: ["JetBrains Mono", "monospace"],
       },
     },
