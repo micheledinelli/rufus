@@ -12,7 +12,7 @@ export default function About() {
           <img className="w-full object-cover rounded-sm" src="/images/about.webp" alt="a picture of me" />
           <div className="font-jetbrains flex flex-col gap-2 items-start">
             <p className="font-bold">
-              Videographer based in Milan with a strong passion for motion design and VFX. Specialized in crafting unique visual content by combining high-quality footage with innovative and creative editing.
+              Milan based Videographer with a strong passion for motion design and VFX. Specialized in crafting unique visual content by combining high-quality footage with innovative and creative editing.
             </p>
             <a
               href="https://www.instagram.com/rufustology/"
