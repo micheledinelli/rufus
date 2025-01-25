@@ -13,4 +13,4 @@
 <!-- [Francesco Rufini](https://www.francescorufini.it)'s personal website -->
 </div>
 
-Francesco Rufini (aka Rufus) is a videographer based in Milan with a strong passion for motion design and VFX. Specialized in crafting unique visual content by combining high-quality footage with innovative and creative editing.
+Francesco Rufini (aka Rufus) is a Milan based Videographer with a strong passion for motion design and VFX. Specialized in crafting unique visual content by combining high-quality footage with innovative and creative editing.
