@@ -1,6 +1,7 @@
-import { VideoData } from "./VideoData";
+import { Video } from "./VideoData";
 
 export interface ProjectData {
+    id: string;
     title: string;
     agency: string;
     client: {
@@ -9,5 +10,5 @@ export interface ProjectData {
     };
     year: string;
     role: string;
-    videos: VideoData[];
+    videos: Video[];
 }

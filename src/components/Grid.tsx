@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { VideoData } from "../types/VideoData";
+import { ProjectData } from "../types/ProjectData";
 
-const videoData: VideoData[] = [
+const projectData: ProjectData[] = [
   {
     id: "jerez-de-la-frontera",
     title: "Jerez de la Frontera | Shoutout",
@@ -12,11 +12,11 @@ const videoData: VideoData[] = [
     role: "Director & Editor",
     agency: "Pros on pixel",
     year: "2024",
-    video: {
+    videos: [{
       src: "/videos/lambo.mp4",
       type: "video/mp4",
       poster: "/images/lambo.webp"
-    }
+    }]
   },
   {
     id: "akoni",
@@ -28,11 +28,11 @@ const videoData: VideoData[] = [
     role: "Editor & VFX Editor",
     agency: "Providence",
     year: "2023",
-    video: {
+    videos: [{
       src: "videos/akoni.mp4",
       type: "video/mp4",
       poster: "/images/akoni.webp"
-    }
+    }]
   },
   {
     id: "d&g",
@@ -44,11 +44,11 @@ const videoData: VideoData[] = [
     role: "Editor & VFX Editor",
     agency: "Providence",
     year: "2022",
-    video: {
+    videos: [{
       src: "videos/deg.mp4",
       type: "video/mp4",
       poster: "/images/deg.webp"
-    }
+    }]
   },
   {
     id: "missoni",
@@ -60,11 +60,11 @@ const videoData: VideoData[] = [
     role: "Editor & VFX Editor",
     agency: "Providence",
     year: "2022",
-    video: {
+    videos: [{
       src: "videos/missoni.mp4",
       type: "video/mp4",
       poster: "/images/missoni.webp"
-    }
+    }]
   },
   {
     id: "gucci",
@@ -76,35 +76,35 @@ const videoData: VideoData[] = [
     role: "Editor & VFX Editor",
     agency: "Providence",
     year: "2021",
-    video: {
+    videos: [{
       src: "videos/gucci.mp4",
       type: "video/mp4",
       poster: "images/gucci.webp"
-    }
+    }]
   },
   {
     id: "yatay",
     title: "Yatay | Shoutout",
     client: {
       name: "Yatay",
-      url: "https://www.yatai.it/"
+      url: "https://www.yatay.it/"
     },
     role: "Motion Designer",
     agency: "Providence",
     year: "2021",
-    video: {
-      src: "videos/yatai.mp4",
+    videos: [{
+      src: "videos/yatay.mp4",
       type: "video/mp4",
       poster: "images/yatay.webp"
-    }
+    }]
   }
 ];
 
 export default function Grid() {
   const [filter, setFilter] = useState<string | null>(null);
-  const [videos, setVideos] = useState<VideoData[]>(videoData);
+  const [videos, setVideos] = useState<ProjectData[]>(projectData);
 
-  const filterData = useCallback((data: VideoData[]) => {
+  const filterData = useCallback((data: ProjectData[]) => {
     if (!filter) {
       setVideos(data);
       return data
@@ -114,7 +114,7 @@ export default function Grid() {
   }, [filter]);
 
   useEffect(() => {
-    filterData(videoData);
+    filterData(projectData);
   }, [filter, filterData]);
 
   return (
@@ -138,8 +138,8 @@ export default function Grid() {
         flex flex-col list-inside list-disc pl-4 my-6 py-4">
           <span className="mb-2">Role</span>
           {
-            videoData &&
-            videoData.reduce((acc: string[], video) => {
+            projectData &&
+            projectData.reduce((acc: string[], video) => {
               if (!acc.includes(video.role)) {
                 acc.push(video.role);
               }
@@ -179,11 +179,11 @@ export default function Grid() {
                   disablePictureInPicture
                   controls={false}
                   playsInline
-                  poster={video.video.poster}
+                  poster={video.videos[0].poster}
                 // onMouseEnter={(e) => e.currentTarget.controls = true}
                 // onMouseLeave={(e) => e.currentTarget.controls = false}
                 >
-                  <source src={video.video.src} type={video.video.type} />
+                  <source src={video.videos[0].src} type={video.videos[0].type} />
                 </video>
 
                 {/* Video badge mobile */}

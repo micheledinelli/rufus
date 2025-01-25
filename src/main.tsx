@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="about" element={<About />} />
 
         <Route path="projects">
-          <Route path=":city" element={<Project />} />
+          <Route path=":project" element={<Project />} />
         </Route>
 
         <Route path="*" element={<Page404 />} />
