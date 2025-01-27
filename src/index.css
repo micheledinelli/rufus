@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00281d;
+  --color-white: #ededed;
+  --color-accent: #00bc98;
+
+  --font-jetbrains: "JetBrains Mono", "monospace";
+}
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .no-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none;  
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
@@ -20,9 +26,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color: #1a4a3c; */
-  color: #00281D;
-  background-color: #EDEDED;
+  color: #00281d;
+  background-color: #ededed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,7 +37,7 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #121212 #EDEDED;
+  scrollbar-color: #121212 #ededed;
 }
 
 body {
@@ -48,9 +53,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #EDEDED;
+  background: #ededed;
 
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }

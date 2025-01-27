@@ -1,194 +1,155 @@
 import { useCallback, useEffect, useState } from "react";
 import { ProjectData } from "../types/ProjectData";
 
-const projectData: ProjectData[] = [
-  {
-    id: "jerez-de-la-frontera",
-    title: "Jerez de la Frontera | Shoutout",
-    client: {
-      name: "Lamborghini squadra corse",
-      url: "https://www.lamborghini.com/it-en/motorsport"
-    },
-    role: "Director & Editor",
-    agency: "Pros on pixel",
-    year: "2024",
-    videos: [{
-      src: "/videos/lambo.mp4",
-      type: "video/mp4",
-      poster: "/images/lambo.webp"
-    }]
-  },
-  {
-    id: "akoni",
-    title: "Akoni | FW23",
-    client: {
-      name: "Akoni",
-      url: "https://www.akoni.com/"
-    },
-    role: "Editor & VFX Editor",
-    agency: "Providence",
-    year: "2023",
-    videos: [{
-      src: "videos/akoni.mp4",
-      type: "video/mp4",
-      poster: "/images/akoni.webp"
-    }]
-  },
-  {
-    id: "d&g",
-    title: "D&G | BTS",
-    client: {
-      name: "Dolce & Gabbana",
-      url: "https://www.dolcegabbana.com/"
-    },
-    role: "Editor & VFX Editor",
-    agency: "Providence",
-    year: "2022",
-    videos: [{
-      src: "videos/deg.mp4",
-      type: "video/mp4",
-      poster: "/images/deg.webp"
-    }]
-  },
-  {
-    id: "missoni",
-    title: "Missoni | BTS",
-    client: {
-      name: "Missoni",
-      url: "https://www.missoni.com/"
-    },
-    role: "Editor & VFX Editor",
-    agency: "Providence",
-    year: "2022",
-    videos: [{
-      src: "videos/missoni.mp4",
-      type: "video/mp4",
-      poster: "/images/missoni.webp"
-    }]
-  },
-  {
-    id: "gucci",
-    title: "Gucci | Sohutout",
-    client: {
-      name: "Gucci",
-      url: "https://www.gucci.com/"
-    },
-    role: "Editor & VFX Editor",
-    agency: "Providence",
-    year: "2021",
-    videos: [{
-      src: "videos/gucci.mp4",
-      type: "video/mp4",
-      poster: "images/gucci.webp"
-    }]
-  },
-  {
-    id: "yatay",
-    title: "Yatay | Shoutout",
-    client: {
-      name: "Yatay",
-      url: "https://www.yatay.it/"
-    },
-    role: "Motion Designer",
-    agency: "Providence",
-    year: "2021",
-    videos: [{
-      src: "videos/yatay.mp4",
-      type: "video/mp4",
-      poster: "images/yatay.webp"
-    }]
-  }
-];
-
 export default function Grid() {
   const [filter, setFilter] = useState<string | null>(null);
-  const [videos, setVideos] = useState<ProjectData[]>(projectData);
+  const [filters, setFilters] = useState<string[]>([]);
+  const [projectsData, setProjectsData] = useState<ProjectData[]>([]);
+  const [projectsDataPointer, setprojectsDataPointer] = useState<ProjectData[]>(
+    []
+  );
 
-  const filterData = useCallback((data: ProjectData[]) => {
-    if (!filter) {
-      setVideos(data);
-      return data
-    }
-    console.log(data.filter((video) => video.role === filter))
-    setVideos(data.filter((video) => video.role === filter));
-  }, [filter]);
+  const filterData = useCallback(
+    (data: ProjectData[]) => {
+      if (!filter) {
+        setprojectsDataPointer(data);
+        return data;
+      }
+
+      const filteredData: ProjectData[] = data.filter((video) => {
+        return video.role.split(", ").includes(filter);
+      });
+
+      setprojectsDataPointer(filteredData);
+    },
+    [filter]
+  );
+
+  const fetchData = async () => {
+    const response = await fetch("/json/projects.json");
+    const data: ProjectData[] = await response.json();
+
+    const filters = data.reduce((acc: string[], video) => {
+      video.role.split(", ").forEach((role) => {
+        if (!acc.includes(role)) {
+          acc.push(role);
+        }
+      });
+      return acc;
+    }, []);
+
+    setProjectsData(data);
+    setprojectsDataPointer(data);
+    setFilters(filters);
+  };
 
   useEffect(() => {
-    filterData(projectData);
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    filterData(projectsData.slice());
   }, [filter, filterData]);
 
   return (
     <div className="relative flex flex-row justify-between h-full bg-white">
-
       {/* Sidebar */}
-      <div className="
+      <div
+        className="
       hidden h-full text-sm
       md:w-1/5 md:flex md:flex-col md:justify-between 
       md:sticky md:top-12"
       >
         <div className="font-bold mt-4 flex flex-col pl-4">
           <p>VIDEO CREATOR</p>
-          <a className="hover:underline decoration-2 text-accent" href="mailto:info@francescorufini.it">
+          <a
+            className="hover:underline decoration-2 text-accent"
+            href="mailto:info@francescorufini.it"
+          >
             INFO@FRANCESCORUFINI.IT
           </a>
-          <a href="tel:3392949688" className="hover:underline decoration-2 text-accent">3392949688</a>
+          <a
+            href="tel:3392949688"
+            className="hover:underline decoration-2 text-accent"
+          >
+            3392949688
+          </a>
         </div>
-        <ul className="
-        font-bold font-jetbrains border-t-1 border-b-1 border-slate-600
-        flex flex-col list-inside list-disc pl-4 my-6 py-4">
+        <ul
+          className="
+        font-bold font-jetbrains border-t-2 border-b-2 border-slate-600
+        flex flex-col list-inside list-disc pl-4 my-6 py-4"
+        >
           <span className="mb-2">Role</span>
-          {
-            projectData &&
-            projectData.reduce((acc: string[], video) => {
-              if (!acc.includes(video.role)) {
-                acc.push(video.role);
-              }
-              return acc;
-            }, []).map((role, index) => (
+          {filters &&
+            filters.map((role, index) => (
               <li
                 key={role + index}
                 className={`decoration-2 cursor-pointer 
-                  ${filter == role ? "line-through text-accent" : "hover:underline"}`}
-                onClick={() => setFilter(role)}>
+                  ${
+                    filter == role
+                      ? "line-through text-accent"
+                      : "hover:underline"
+                  }`}
+                onClick={() => setFilter(role)}
+              >
                 {role}
               </li>
-            ))
-          }
-          <li className="decoration-2 cursor-pointer hover:underline"
-            onClick={() => setFilter(null)}>
+            ))}
+          <li
+            className="decoration-2 cursor-pointer hover:underline"
+            onClick={() => setFilter(null)}
+          >
             Reset
           </li>
         </ul>
-      </div >
+      </div>
 
       {/* Content */}
-      < div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600" >
-        {
-          videos &&
-          videos.map((video) => (
-            <div key={video.id} className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-1 border-slate-600 bg-white">
+      <div className="relative w-full h-full lg:w-4/5 md:border-l-2 md:border-slate-600">
+        {projectsDataPointer &&
+          projectsDataPointer.map((video) => (
+            <div
+              key={video.id}
+              className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-2 border-slate-600 bg-white"
+            >
               <div
                 className="relative w-full h-full md:w-3/5"
-                onClick={() => window.location.href = "/projects/" + video.id}
+                onClick={() => (window.location.href = "/projects/" + video.id)}
               >
-                <video className="w-full h-full tv object-cover"
+                <video
+                  className="w-full h-full tv object-cover"
                   controlsList="nodownload"
-                  autoPlay
                   loop
                   muted
                   disablePictureInPicture
                   controls={false}
                   playsInline
                   poster={video.videos[0].poster}
-                // onMouseEnter={(e) => e.currentTarget.controls = true}
-                // onMouseLeave={(e) => e.currentTarget.controls = false}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.play();
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.pause();
+                  }}
+                  onTouchStart={(e) => {
+                    e.currentTarget.play();
+                  }}
+                  onTouchEnd={(e) => {
+                    e.currentTarget.pause();
+                  }}
                 >
-                  <source src={video.videos[0].src} type={video.videos[0].type} />
+                  <source
+                    src={video.videos[0].src}
+                    type={video.videos[0].type}
+                  />
                 </video>
 
                 {/* Video badge mobile */}
                 <div className="md:hidden text-sm absolute top-4 left-4 text-white mix-blend-difference">
-                  <a href={"/projects/" + video.id} className="font-bold">{video.title}</a>
+                  <a href={"/projects/" + video.id} className="font-bold">
+                    {video.title}
+                  </a>
                 </div>
                 <div className="md:hidden text-sm absolute bottom-4 right-4 text-white mix-blend-difference">
                   <p className="font-semibold">{video.role}</p>
@@ -197,22 +158,47 @@ export default function Grid() {
 
               {/* Video description for md and beyond  */}
               <div className="hidden md:block mt-6 w-2/5">
-                <a href={"/projects/" + video.id} className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2">
+                <a
+                  href={"/projects/" + video.id}
+                  className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2"
+                >
                   {video.title}
                 </a>
                 <div className="hidden text-sm font-semibold md:mt-8 md:flex md:flex-col md:gap-4">
                   <div>
                     <p className="text-xs font-jetbrains">Client</p>
-                    <a href={video.client.url} className="hover:line-through decoration-2">{video.client.name}</a>
+                    <a
+                      href={video.client.url}
+                      className="hover:line-through decoration-2"
+                    >
+                      {video.client.name}
+                    </a>
                   </div>
                   <div>
                     <p className="text-xs font-jetbrains">Role</p>
-                    <p className={`${filter === video.role ? "animate-pulse text-accent" : ""}`}>{video.role}</p>
+                    {video.role.split(", ").map((role, index) => (
+                      <span
+                        key={role + index}
+                        className={`${
+                          filter === role ? "animate-pulse text-accent" : ""
+                        }`}
+                      >
+                        {role}
+                        {index < video.role.split(", ").length - 1 && ", "}
+                      </span>
+                    ))}
                   </div>
-                  <div>
-                    <p className="text-xs font-jetbrains">Agency</p>
-                    <p>{video.agency}</p>
-                  </div>
+                  {video.agency && (
+                    <div>
+                      <p className="text-xs font-jetbrains">Agency</p>
+                      <a
+                        className="hover:line-through decoration-2"
+                        href={video.agency.url}
+                      >
+                        {video.agency.name}
+                      </a>
+                    </div>
+                  )}
                   <div>
                     <p className="text-xs font-jetbrains">Year</p>
                     <p>{video.year}</p>
@@ -220,9 +206,8 @@ export default function Grid() {
                 </div>
               </div>
             </div>
-          ))
-        }
-      </div >
-    </div >
+          ))}
+      </div>
+    </div>
   );
 }

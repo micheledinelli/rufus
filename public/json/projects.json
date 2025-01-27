@@ -1,0 +1,139 @@
+[
+  {
+    "id": "jerez-de-la-frontera",
+    "title": "Jerez de la Frontera | Shoutout",
+    "client": {
+      "name": "Lamborghini squadra corse",
+      "url": "https://www.lamborghini.com/it-en/motorsport"
+    },
+    "role": "Filmmaker, Editor",
+    "agency": {
+      "name": "Prose on Pixels",
+      "url": "https://www.proseonpixels.com/"
+    },
+    "year": "2024",
+    "videos": [
+      {
+        "src": "/videos/lambo.mp4",
+        "type": "video/mp4",
+        "poster": "/images/lambo.webp"
+      }
+    ]
+  },
+  {
+    "id": "akoni",
+    "title": "Akoni | FW23",
+    "client": {
+      "name": "Akoni",
+      "url": "https://www.akoni.com/"
+    },
+    "role": "Editor, VFX Editor",
+    "agency": {
+      "name": "Tank Magazine",
+      "url": "https://tank.tv/magazine"
+    },
+    "year": "2023",
+    "videos": [
+      {
+        "src": "/videos/akoni.mp4",
+        "type": "video/mp4",
+        "poster": "/images/akoni.webp"
+      },
+      {
+        "src": "/videos/akoni2.mp4",
+        "type": "video/mp4",
+        "poster": "/images/akoni.webp"
+      },
+      {
+        "src": "/videos/akoni3.mp4",
+        "type": "video/mp4",
+        "poster": "/images/akoni.webp"
+      }
+    ]
+  },
+  {
+    "id": "d&g",
+    "title": "D&G SS 2025| BTS",
+    "client": {
+      "name": "Dolce & Gabbana",
+      "url": "https://www.dolcegabbana.com/"
+    },
+    "role": "Editor, Motion Designer",
+    "year": "2024",
+    "videos": [
+      {
+        "src": "/videos/deg.mp4",
+        "type": "video/mp4",
+        "poster": "/images/deg.webp"
+      }
+    ]
+  },
+  {
+    "id": "missoni",
+    "title": "Missoni | BTS",
+    "client": {
+      "name": "Missoni",
+      "url": "https://www.missoni.com/"
+    },
+    "role": "Filmmaker, Editor",
+    "agency": {
+      "name": "Studio April",
+      "url": "https://www.april.studio/"
+    },
+    "year": "2024",
+    "videos": [
+      {
+        "src": "/videos/missoni.mp4",
+        "type": "video/mp4",
+        "poster": "/images/missoni.webp"
+      }
+    ]
+  },
+  {
+    "id": "gucci",
+    "title": "Gucci Christmas Box",
+    "client": {
+      "name": "Gucci",
+      "url": "https://www.gucci.com/"
+    },
+    "role": "Editor, VFX Editor",
+    "agency": {
+      "name": "d'Aria",
+      "url": "https://www.d-aria.eu/"
+    },
+    "year": "2024",
+    "videos": [
+      {
+        "src": "/videos/gucci.mp4",
+        "type": "video/mp4",
+        "poster": "images/gucci.webp"
+      },
+      {
+        "src": "/videos/gucci2.mp4",
+        "type": "video/mp4",
+        "poster": "images/gucci.webp"
+      }
+    ]
+  },
+  {
+    "id": "yatay",
+    "title": "Yatay",
+    "client": {
+      "name": "Yatay",
+      "url": "https://yatay.coronetspa.it/"
+    },
+    "role": "Motion Designer",
+    "agency": {
+      "name": "Estro Studio",
+      "url": "https://estro.studio/"
+    },
+    "year": "2024",
+    "videos": [
+      {
+        "src": "/videos/yatay.mp4",
+        "type": "video/mp4",
+        "poster": "images/yatay.webp"
+      }
+    ]
+  }
+]
