@@ -13,5 +13,9 @@ export interface ProjectData {
   };
   year: string;
   role: string;
+  director: {
+    name: string;
+    url: string;
+  };
   videos: Video[];
 }

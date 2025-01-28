@@ -6,8 +6,8 @@ export default function About() {
   return (
     <React.Fragment>
       <Navbar />
-      <div className="h-[calc(100vh-6rem)]">
-        <div className="w-2/3 md:w-1/3 h-full flex flex-col justify-center items-center my-auto mx-auto gap-4">
+      <div className="h-[calc(100vh-7rem)]">
+        <div className="w-3/4 md:w-1/3 h-full flex flex-col justify-center items-center my-auto mx-auto gap-4">
           <p className="font-bold text-lg text-center">Francesco Rufini</p>
           <img
             className="w-full object-cover rounded"

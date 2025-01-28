@@ -7,6 +7,10 @@
       "url": "https://www.lamborghini.com/it-en/motorsport"
     },
     "role": "Filmmaker, Editor",
+    "director": {
+      "name": "Francesco Rufini",
+      "url": "/"
+    },
     "agency": {
       "name": "Prose on Pixels",
       "url": "https://www.proseonpixels.com/"
@@ -28,6 +32,10 @@
       "url": "https://www.akoni.com/"
     },
     "role": "Editor, VFX Editor",
+    "director": {
+      "name": "Francesco Rufini",
+      "url": "/"
+    },
     "agency": {
       "name": "Tank Magazine",
       "url": "https://tank.tv/magazine"
@@ -59,6 +67,10 @@
       "url": "https://www.dolcegabbana.com/"
     },
     "role": "Editor, Motion Designer",
+    "director": {
+      "name": "Nicolò Terraneo",
+      "url": "https://nicoloterraneo.it/"
+    },
     "year": "2024",
     "videos": [
       {
@@ -76,6 +88,10 @@
       "url": "https://www.missoni.com/"
     },
     "role": "Filmmaker, Editor",
+    "director": {
+      "name": "Francesco Rufini",
+      "url": "/"
+    },
     "agency": {
       "name": "Studio April",
       "url": "https://www.april.studio/"
@@ -97,6 +113,10 @@
       "url": "https://www.gucci.com/"
     },
     "role": "Editor, VFX Editor",
+    "director": {
+      "name": "Nicolò Terraneo",
+      "url": "https://nicoloterraneo.it/"
+    },
     "agency": {
       "name": "d'Aria",
       "url": "https://www.d-aria.eu/"
@@ -123,6 +143,10 @@
       "url": "https://yatay.coronetspa.it/"
     },
     "role": "Motion Designer",
+    "director": {
+      "name": "Francesco Rufini",
+      "url": "/"
+    },
     "agency": {
       "name": "Estro Studio",
       "url": "https://estro.studio/"
