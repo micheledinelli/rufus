@@ -37,7 +37,7 @@ export default function Navbar() {
         >
           <svg
             id="icon-open"
-            className="w-5 h-5"
+            className="w-5 h-5 cursor-pointer"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -54,7 +54,7 @@ export default function Navbar() {
           <svg
             viewBox="0 0 24 24"
             id="icon-close"
-            className="w-6 h-6 hidden"
+            className="w-6 h-6 hidden cursor-pointer"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -76,7 +76,7 @@ export default function Navbar() {
           </svg>
         </button>
         <div
-          className="hidden z-50 fixed top-12 bg-[#121212] opacity-90 text-white 
+          className="hidden z-50 fixed top-12 bg-primary opacity-90 text-white 
           h-[calc(100vh-3rem)] right-0 w-full
           text-6xl overflow-hidden transition-all duration-300 ease-in-out"
           id="mobile-menu"
