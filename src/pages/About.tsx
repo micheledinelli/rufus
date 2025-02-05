@@ -33,11 +33,22 @@ export default function About() {
             >
               Linkedin
             </a>
-            <div className="text-xs mt-6">
-              Website coded by
-              <p className="text-accent hover:underline decoration-2">
-                <a href="https://micheledinelli.github.io"> Michele Dinelli</a>
-              </p>
+            <div className="text-xs mt-6 flex flex-col">
+              <div>
+                Website coded by
+                <p className="text-accent hover:underline decoration-2">
+                  <a href="https://micheledinelli.github.io">
+                    {" "}
+                    Michele Dinelli
+                  </a>
+                </p>
+              </div>
+              <div className="h-12">
+                Source code available on
+                <p className="text-accent hover:underline decoration-2">
+                  <a href="https://github.com/micheledinelli/rufus"> GitHub </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

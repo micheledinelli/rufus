@@ -39,14 +39,14 @@ export default function Project() {
             {map[project].title}
           </p>
         )}
-        <div className="relative h-4/6 w-full flex flex-col rounded md:flex-row justify-between overflow-x-scroll snap-mandatory snap-x">
+        <div className="h-4/6 w-full flex flex-col rounded md:flex-row justify-between md:overflow-x-scroll md:snap-mandatory md:snap-x">
           {map &&
             project &&
             map[project] &&
             map[project].videos.map((video) => (
               <div
                 key={video.src}
-                className="h-full w-full md:w-[calc(w-full-2rem)] shrink-0 sticky top-12 cursor-pointer snap-center"
+                className="h-full w-full sticky top-12 md:w-[calc(w-full-2rem)] md:snap-center md:shrink-0 cursor-pointer"
               >
                 <video
                   className="w-full h-full object-cover"
