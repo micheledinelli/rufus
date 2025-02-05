@@ -113,12 +113,9 @@ export default function Grid() {
               key={video.id}
               className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-2 border-slate-600 bg-white"
             >
-              <div
-                className="relative w-full h-full md:w-3/5"
-                onClick={() => (window.location.href = "/projects/" + video.id)}
-              >
+              <div className="relative w-full h-full md:w-3/5">
                 <video
-                  className="w-full h-full tv object-cover"
+                  className="w-full h-full cursor-pointer object-cover user-select-none"
                   controlsList="nodownload"
                   loop
                   muted
@@ -126,17 +123,13 @@ export default function Grid() {
                   controls={false}
                   playsInline
                   poster={video.videos[0].poster}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.play();
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.pause();
-                  }}
-                  onTouchStart={(e) => {
-                    e.currentTarget.play();
-                  }}
-                  onTouchEnd={(e) => {
-                    e.currentTarget.pause();
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.currentTarget.paused
+                      ? e.currentTarget.play()
+                      : e.currentTarget.pause();
+
+                    e.currentTarget.classList.toggle("tv");
                   }}
                 >
                   <source
@@ -160,7 +153,7 @@ export default function Grid() {
               <div className="hidden md:block mt-6 w-2/5">
                 <a
                   href={"/projects/" + video.id}
-                  className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-2"
+                  className="font-bold text-xl cursor-pointer py-2 hover:line-through decoration-4"
                 >
                   {video.title}
                 </a>
