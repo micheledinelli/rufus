@@ -52,7 +52,7 @@ export default function Grid() {
   }, [filter, filterData]);
 
   return (
-    <div className="relative flex flex-row justify-between h-full bg-white">
+    <div className="relative flex flex-row justify-between h-full bg-white select-none">
       {/* Sidebar */}
       <div
         className="
@@ -132,8 +132,8 @@ export default function Grid() {
                   onMouseLeave={(e) => {
                     e.currentTarget.pause();
                   }}
-                  onTouchStart={(e) => {
-                    e.currentTarget.play();
+                  onTouchStart={(_) => {
+                    // e.currentTarget.play();
                   }}
                   onTouchEnd={(e) => {
                     e.currentTarget.pause();
