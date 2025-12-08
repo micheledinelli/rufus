@@ -21,6 +21,10 @@
   }
 }
 
+html {
+  background-color: #ededed;
+}
+
 :root {
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
@@ -43,7 +47,7 @@
 body {
   margin: 0;
   padding: 0;
-
+  background-color: #ededed;
   height: 100%;
   width: 100%;
 }
