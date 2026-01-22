@@ -1,5 +1,24 @@
 [
   {
+    "id": "ferragamo-fw25-bts",
+    "title": "Ferragamo | FW25 Campaign Villa BTS",
+    "client": {
+      "name": "Ferragamo",
+      "url": "https://www.ferragamo.com/"
+    },
+    "role": "Filmmaker, Editor",
+   "agency":{
+	"name": "contento360",
+	 "url": "https://www.contento360.it"
+    },    
+    "year": "2025",
+    "video": {
+      "src": "/videos/ferragamo-fw-25.mp4",
+      "type": "video/mp4",
+      "poster": "/images/ferragamo-fw-25.webp"
+    }
+  },
+  {
     "id": "jerez-de-la-frontera",
     "title": "Jerez de la Frontera | Shoutout",
     "client": {
