@@ -7,16 +7,22 @@
       "url": "https://www.ferragamo.com/"
     },
     "role": "Filmmaker, Editor",
-   "agency":{
-	"name": "contento360",
-	 "url": "https://www.contento360.it"
+    "director": {
+      "name": "Francesco Rufini",
+      "url": "/"
+    },
+    "agency":{
+      "name": "contento360",
+      "url": "https://www.contento360.it"
     },    
     "year": "2025",
-    "video": {
-      "src": "/videos/ferragamo-fw-25.mp4",
-      "type": "video/mp4",
-      "poster": "/images/ferragamo-fw-25.webp"
-    }
+    "videos": [
+      {
+        "src": "/videos/ferragamo-fw-25.mp4",
+        "type": "video/mp4",
+        "poster": "/images/ferragamo-fw-25.webp"
+      }
+    ]
   },
   {
     "id": "jerez-de-la-frontera",
