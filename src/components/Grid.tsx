@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 import { ProjectData } from "../types/ProjectData";
 
 export default function Grid() {
@@ -8,6 +8,19 @@ export default function Grid() {
   const [projectsDataPointer, setprojectsDataPointer] = useState<ProjectData[]>(
     []
   );
+
+  const projectsByYear = useMemo(() => {
+    return projectsDataPointer.reduce((acc, project) => {
+      const year = project.year;
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(project);
+      return acc;
+    }, {} as Record<string, ProjectData[]>);
+  }, [projectsDataPointer]);
+
+  const sortedYears = useMemo(() => {
+    return Object.keys(projectsByYear).sort((a, b) => Number(b) - Number(a));
+  }, [projectsByYear]);
 
   const filterData = useCallback(
     (data: ProjectData[]) => {
@@ -78,7 +91,7 @@ export default function Grid() {
         <ul
           className="
         font-bold font-jetbrains border-t-2 border-b-2 border-slate-600
-        flex flex-col list-inside list-disc pl-4 my-6 py-4"
+        flex flex-col list-inside list-disc pl-4 mt-3 py-4"
         >
           <span className="mb-2">Role</span>
           {filters &&
@@ -103,6 +116,27 @@ export default function Grid() {
             Reset
           </li>
         </ul>
+        <div
+          className="font-bold font-jetbrains flex flex-col pl-4 py-4">
+          {sortedYears.map((year) => (
+          <div key={year} className="mb-2">
+            <span className="text-accent mb-2 block">{year}</span>
+            <ul className="pl-4 list-disc">
+              {projectsByYear[year].map((project) => (
+              <li key={project.id} className="mb-1">
+                <a
+                  href={`/projects/${project.id}`}
+                  className="hover:line-through decoration-2"
+                >
+                  {project.title}
+                </a>
+              </li>
+              ))}
+            </ul>
+          </div>
+          ))}
+        </div>
+
       </div>
 
       {/* Content */}
