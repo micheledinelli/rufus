@@ -1,6 +1,7 @@
 import { useMemo, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { ProjectData } from "../types/ProjectData";
+import CursorDot from "./CursorDot";
 
 export default function Grid() {
   const navigate = useNavigate();
@@ -82,6 +83,7 @@ export default function Grid() {
 
   return (
     <div className="relative flex flex-row justify-between h-full bg-white select-none">
+      <CursorDot />
       {/* Sidebar */}
       <div
         className="
@@ -187,11 +189,12 @@ export default function Grid() {
               className="sticky top-12 md:flex md:flex-row md:justify-start md:items-start w-full gap-8 border-b-2 border-slate-600 bg-white"
             >
               <div
-                className="relative w-full h-full md:w-3/5 cursor-pointer"
+                className="relative w-full h-full md:w-3/5 md:cursor-none"
+                data-cursor-dot
                 onClick={() => navigate("/projects/" + video.id)}
               >
                 <video
-                  className="w-full h-full tv object-cover"
+                  className="w-full h-full object-cover"
                   controlsList="nodownload"
                   loop
                   muted
