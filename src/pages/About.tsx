@@ -12,7 +12,7 @@ export default function About() {
           <img
             className="w-full object-cover rounded"
             src="/images/about.webp"
-            alt="a picture of me"
+            alt="Portrait of Francesco Rufini"
           />
           <div className="font-jetbrains flex flex-col gap-2 items-start">
             <p className="font-bold">
@@ -23,12 +23,16 @@ export default function About() {
             </p>
             <a
               href="https://www.instagram.com/rufustology/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-accent hover:underline decoration-2"
             >
               Instagram
             </a>
             <a
               href="https://www.linkedin.com/in/francesco-rufini-741667134/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-accent hover:underline decoration-2"
             >
               Linkedin
@@ -37,7 +41,11 @@ export default function About() {
               <div>
                 Website coded by
                 <p className="text-accent hover:underline decoration-2">
-                  <a href="https://micheledinelli.github.io">
+                  <a
+                    href="https://micheledinelli.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {" "}
                     Michele Dinelli
                   </a>
@@ -46,7 +54,14 @@ export default function About() {
               <div className="h-12">
                 Source code available on
                 <p className="text-accent hover:underline decoration-2">
-                  <a href="https://github.com/micheledinelli/rufus"> GitHub </a>
+                  <a
+                    href="https://github.com/micheledinelli/rufus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    GitHub{" "}
+                  </a>
                 </p>
               </div>
             </div>
