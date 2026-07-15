@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
+const INTERACTIVE_SELECTOR = 'a, button, [role="button"], [data-cursor-dot]';
+
 /**
- * Round cursor that replaces the native pointer over any element marked
- * with `data-cursor-dot`. Uses mix-blend-mode: difference so it reads
- * light over dark footage and dark over light footage automatically.
+ * Custom round cursor active across the whole site. Sits at the site's
+ * dark green by default and switches to the light green accent while
+ * hovering any clickable element (links, buttons, the video grid, etc).
  */
 export default function CursorDot() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [isInteractive, setIsInteractive] = useState(false);
 
   useEffect(() => {
     const dot = dotRef.current;
@@ -23,13 +25,13 @@ export default function CursorDot() {
 
   useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("[data-cursor-dot]")) {
-        setVisible(true);
+      if ((e.target as HTMLElement).closest(INTERACTIVE_SELECTOR)) {
+        setIsInteractive(true);
       }
     };
     const handleMouseOut = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("[data-cursor-dot]")) {
-        setVisible(false);
+      if ((e.target as HTMLElement).closest(INTERACTIVE_SELECTOR)) {
+        setIsInteractive(false);
       }
     };
 
@@ -45,8 +47,8 @@ export default function CursorDot() {
     <div
       ref={dotRef}
       aria-hidden="true"
-      className={`hidden md:block fixed top-0 left-0 z-50 pointer-events-none rounded-full bg-white mix-blend-difference transition-[width,height,opacity] duration-150 ease-out ${
-        visible ? "w-8 h-8 opacity-100" : "w-0 h-0 opacity-0"
+      className={`hidden md:block fixed top-0 left-0 z-50 w-4 h-4 pointer-events-none rounded-full transition-colors duration-150 ease-out ${
+        isInteractive ? "bg-accent" : "bg-primary"
       }`}
     />
   );
