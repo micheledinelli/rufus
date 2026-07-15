@@ -159,7 +159,7 @@ export default function Grid() {
               <li key={project.id} className="mb-1">
                 <Link
                   to={`/projects/${project.id}`}
-                  className="hover:line-through decoration-2"
+                  className="hover:bg-primary hover:text-white px-1 -mx-1 transition-colors duration-150"
                 >
                   {project.title}
                 </Link>
