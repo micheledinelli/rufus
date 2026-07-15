@@ -1,43 +1,39 @@
+import { useState } from "react";
+import { Link } from "react-router";
 import "../css/cursors.css";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div
-      className="sticky top-0 z-20 bg-white 
-    flex flex-row justify-between items-center 
+      className="sticky top-0 z-20 bg-white
+    flex flex-row justify-between items-center
     py-2 px-4 h-12 tracking-tighter
     border-b-2 border-slate-600 font-extrabold md:text-2xl"
     >
-      <a className="planet hover:line-through decoration-4" href="/">
+      <Link className="planet hover:line-through decoration-4" to="/">
         FRANCESCO RUFINI
-      </a>
-      <a
+      </Link>
+      <Link
         className="hidden md:block cursor-pointer hover:line-through decoration-4"
-        href="/about"
+        to="/about"
       >
         ABOUT
-      </a>
+      </Link>
       <div className="md:hidden justify-center items-center">
         <button
-          onClick={() => {
-            const mobileMenu = document.getElementById("mobile-menu");
-            const iconOpen = document.getElementById("icon-open");
-            const iconClose = document.getElementById("icon-close");
-            if (mobileMenu && iconOpen && iconClose) {
-              mobileMenu.classList.toggle("hidden");
-              iconOpen.classList.toggle("hidden");
-              iconClose.classList.toggle("hidden");
-            }
-          }}
+          onClick={() => setMenuOpen((open) => !open)}
           type="button"
           id="menu-toggle"
           aria-label="Toggle Menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           title="Toggle Menu"
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden"
         >
           <svg
-            id="icon-open"
-            className="w-7 h-7 cursor-pointer"
+            className={`w-7 h-7 cursor-pointer ${menuOpen ? "hidden" : ""}`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,8 +46,8 @@ export default function Navbar() {
           </svg>
           <svg
             viewBox="0 0 24 24"
-            id="icon-close"
-            className="w-7 h-7 hidden cursor-pointer"
+            className={`w-7 h-7 cursor-pointer ${menuOpen ? "" : "hidden"}`}
+            aria-hidden="true"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -62,23 +58,27 @@ export default function Navbar() {
           </svg>
         </button>
         <div
-          className="hidden z-50 fixed top-12 bg-primary opacity-90 text-white 
+          className={`${
+            menuOpen ? "" : "hidden"
+          } z-50 fixed top-12 bg-primary opacity-90 text-white
           h-[calc(100vh-3rem)] right-0 w-full
-          text-6xl overflow-hidden transition-all duration-300 ease-in-out"
+          text-6xl overflow-hidden transition-all duration-300 ease-in-out`}
           id="mobile-menu"
         >
-          <a
+          <Link
             className="w-full block cursor-pointer hover:line-through decoration-4 py-4 px-4"
-            href="/"
+            to="/"
+            onClick={() => setMenuOpen(false)}
           >
             HOME
-          </a>
-          <a
+          </Link>
+          <Link
             className="w-full block cursor-pointer hover:line-through decoration-4 py-4 px-4"
-            href="/about"
+            to="/about"
+            onClick={() => setMenuOpen(false)}
           >
             ABOUT
-          </a>
+          </Link>
         </div>
       </div>
     </div>
