@@ -6,19 +6,22 @@ import Home from './Home.tsx'
 import About from './pages/About.tsx';
 import Project from './pages/Project.tsx';
 import Page404 from './pages/Page404.tsx';
+import Layout from './components/Layout.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
 
-        <Route path="projects">
-          <Route path=":project" element={<Project />} />
+          <Route path="projects">
+            <Route path=":project" element={<Project />} />
+          </Route>
+
+          <Route path="*" element={<Page404 />} />
         </Route>
-
-        <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
